@@ -7,19 +7,18 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: app-of-apps
+    namespace: argocd
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: argocd-apps/app-of-apps
+    path: infra-tools-stage/app-of-apps
     repoURL: 'https://github.com/MirafzalCompany/argocd-repo'
     targetRevision: master
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-      allowEmpty: true
+#    automated:
+#      prune: true
+#      selfHeal: true
+#      allowEmpty: true
     syncOptions:
       - Prune=true
       - Delete=true
-      - CreateNamespace=true
