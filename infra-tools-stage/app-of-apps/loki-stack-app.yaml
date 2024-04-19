@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: loki-stack
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 2.10.2
+    helm:
+      releaseName: loki-stack
+      valuesObject:
+        loki:
+          enabled: true
+          persistence:
+            enabled: true
+            storageClassName: do-block-storage
+            accessModes: [ "ReadWriteOnce" ]
+            size: 15Gi
+
+        promtail:
+          enabled: true
+        fluent-bit:
+          enabled: false
+
+        grafana:
+          enabled: false
+
+        prometheus:
+          enabled: false
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: loki-stack
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: loki-stack
