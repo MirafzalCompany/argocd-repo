@@ -97,7 +97,7 @@ spec:
               nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
               nginx.ingress.kubernetes.io/ssl-passthrough: "true"
               cert-manager.io/cluster-issuer: letsencrypt-prod
-#            tls: true
+            tls: true
 #          certificate:
 #            enabled: true
 #            domain: "argocd.staging.mirafzal.uz"
