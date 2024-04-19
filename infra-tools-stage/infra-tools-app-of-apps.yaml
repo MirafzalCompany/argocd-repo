@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: argocd-apps/app-of-apps
-    repoURL: 'https://github.com/cloudcom-llc/k8s-helm-charts'
+    repoURL: 'https://github.com/MirafzalCompany/argocd-repo'
     targetRevision: master
   syncPolicy:
     automated:
