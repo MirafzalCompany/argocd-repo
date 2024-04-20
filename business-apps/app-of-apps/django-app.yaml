@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: django
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: development-apps
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: django
+    repoURL: 'https://github.com/MirafzalCompany/argocd-repo'
+    targetRevision: master
+    helm:
+      valueFiles:
+        - values.yaml
+  project:
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
+
+    syncOptions:
+      - CreateNamespace=true
+
