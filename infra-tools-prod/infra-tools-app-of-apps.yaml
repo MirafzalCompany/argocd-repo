@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: infra-tools-stage/app-of-apps
+    path: infra-tools-prod/app-of-apps
     repoURL: 'https://github.com/MirafzalCompany/argocd-repo'
     targetRevision: master
   syncPolicy:
