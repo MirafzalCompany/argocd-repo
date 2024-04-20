@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: private-repo-creds
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+stringData:
+  type: "git"
+  url: "https://github.com/MirafzalCompany"
+  password: "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"
+  username: "mirafzal"
