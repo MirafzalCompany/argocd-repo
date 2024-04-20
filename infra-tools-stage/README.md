@@ -5,7 +5,7 @@
 kubectl create ns argocd
 helm repo add argo https://argoproj.github.io/argo-helm
 helm repo update
-helm upgrade -i -n argocd argocd argo/argo-cd --version 6.7.2 -f infra-tools-stage/argocd-values.yaml
+helm upgrade -i -n argocd argocd argo/argo-cd --version 6.7.2
 ```
 2. Port-forward in dedicated tab of terminal
 ```
@@ -28,3 +28,8 @@ kubectl apply -f infra-tools-stage/infra-tools-app-of-apps.yaml
 8. Sync ONLY namespaces and applications
 9. After all the applications are sync and their pods are ready,
    apply other resources in infra-tools-app-of-apps (ClusterSecretStore, IPAddressPool, L2Advertisement)
+
+Sync order:
+1. Ingress nginx
+2. Cert-manager
+3. Argocd-self
